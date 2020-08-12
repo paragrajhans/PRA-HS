@@ -21,6 +21,24 @@ export class MockHttpCalIInterceptor implements HttpInterceptor {
                 body: ((data) as any).default,
             }));
         }
+        if (request.method === 'POST') {
+            console.log("Request Method : " + request.method);
+            console.log("Request URL : " + request.url);
+            console.log("Request Body : " + request.body);
+
+            let temp_data = (data as any).default;
+            temp_data.push(JSON.parse(request.body));
+
+            request = request.clone({
+                body: temp_data,
+            })
+
+            return of(new HttpResponse({
+                status: 200,
+                body: temp_data,
+            }));
+        }
+
         return next.handle(request);
     }
 
