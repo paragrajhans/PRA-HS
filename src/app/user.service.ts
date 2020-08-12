@@ -37,5 +37,17 @@ export class UserService {
     );
   }
 
+  deleteUser(id: number): Observable<User> {
+    const url = `${users_url}/${id}`;
+    let private_options = {
+      headers: new HttpHeaders({ "Content-Type": "application/json" })
+    };
+    private_options.headers.append("Accept", "application/json");
+    private_options.headers.append("Access-Control-Allow-Origin", "*");
+    return this.http.delete<User>(url, private_options).pipe(
+      tap(data => console.log(data)),
+    );
+  }
+
 
 }

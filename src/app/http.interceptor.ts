@@ -39,6 +39,26 @@ export class MockHttpCalIInterceptor implements HttpInterceptor {
             }));
         }
 
+        if (request.method === 'DELETE') {
+            console.log("Request Method : " + request.method);
+            console.log("Request URL : " + request.url);
+            console.log("Request Body : " + JSON.stringify(request.body));
+
+            let id = request.url.substring(request.url.lastIndexOf('/') + 1);
+            let temp = (data as any).default;
+            const index = temp.findIndex(x => x.id == id);
+            if (index !== undefined) temp.splice(index, 1);
+
+            request = request.clone({
+                body: temp,
+            })
+
+            return of(new HttpResponse({
+                status: 200,
+                body: temp,
+            }));
+        }
+
         return next.handle(request);
     }
 
