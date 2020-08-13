@@ -32,4 +32,10 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  updateUser(user) {
+    console.log(user);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.router.navigateByUrl(`/update-user/${user.id}`);
+  }
+
 }

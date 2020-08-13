@@ -49,5 +49,17 @@ export class UserService {
     );
   }
 
+  updateUser(user): Observable<User> {
+    console.log(user);
+    // const url = `${users_url}/${user.id}`;
+    let private_options = {
+      headers: new HttpHeaders({ "Content-Type": "application/json" })
+    };
+    private_options.headers.append("Accept", "application/json");
+    private_options.headers.append("Access-Control-Allow-Origin", "*");
+    return this.http.put<any>(users_url, user, private_options).pipe(
+      tap(_ => console.log(`updated product`)));
+  }
+
 
 }

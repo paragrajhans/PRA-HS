@@ -9,13 +9,15 @@ import { MockHttpCalIInterceptor } from './http.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     HeaderComponent,
-    AddUserComponent
+    AddUserComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,

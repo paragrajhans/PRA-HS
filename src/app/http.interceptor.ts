@@ -59,6 +59,40 @@ export class MockHttpCalIInterceptor implements HttpInterceptor {
             }));
         }
 
+        if (request.method === 'PUT') {
+            // console.log("Request Method : " + request.method);
+            // console.log("Request URL : " + request.url);
+            // console.log("Request Body : " + request.body);
+
+            let temp = (data as any).default;
+            let new_user = request.body;
+            console.log(temp);
+            // console.log(JSON.parse(new_user));
+            let user_id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+            // console.log("ID", user_id);
+
+            let a = [];
+            a.push(JSON.parse(new_user));
+
+            temp.forEach((element, index) => {
+                if (element.id == user_id) {
+                    temp[index] = a[0];
+                }
+            });
+
+            // console.log(temp);
+
+            request = request.clone({
+                body: temp,
+            })
+
+            return of(new HttpResponse({
+                status: 200,
+                body: temp,
+            }));
+
+        }
+
         return next.handle(request);
     }
 
