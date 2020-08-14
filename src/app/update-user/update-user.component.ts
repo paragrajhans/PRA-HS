@@ -11,10 +11,12 @@ import { User } from '../user';
 })
 export class UpdateUserComponent implements OnInit {
   public user;
-  id: number;
+  submitted = false;
+  id: Number;
   public updateuserform: FormGroup;
 
-  constructor(private router: Router, private route: ActivatedRoute, private frmBld: FormBuilder, private userService: UserService) { }
+  constructor(private router: Router, private route: ActivatedRoute,
+    private frmBld: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -26,18 +28,79 @@ export class UpdateUserComponent implements OnInit {
       id: ['', Validators.required],
       first: ['', Validators.required],
       last: ['', Validators.required],
-      age: ['', Validators.required],
+      age: '',
       title: ['', Validators.required],
       other: ['', Validators.required],
-      company: ['', Validators.required],
-      email: ['', Validators.required],
-      phone: ['', Validators.required],
+      company: '',
+      email: ['', Validators.required, Validators.email],
+      phone: this.frmBld.array([]),
       address: ['', Validators.required],
-      address2: ['', Validators.required],
+      address2: '',
       city: ['', Validators.required],
       state: ['', Validators.required],
       zipcode: ['', Validators.required],
     })
+
+    this.updateuserform.setControl('phone', this.setExistingSkills(this.user.phone));
+
+    this.setTitleValidators();
+  }
+
+  setExistingSkills(phones: any[]): FormArray {
+    const formArray = new FormArray([]);
+    phones.forEach(s => {
+      // console.log("S", s);
+      formArray.push(this.frmBld.group({
+        phone: s
+      }));
+      // console.log(formArray);
+    });
+    return formArray;
+  }
+
+  initiateForm(): FormGroup {
+    return this.frmBld.group({
+      phone: ['', Validators.required]
+    });
+  }
+
+  get phone() {
+    let control = this.updateuserform.get('phone') as FormArray;
+    return control;
+  }
+
+  addPhone() {
+    const control = this.updateuserform.get('phone') as FormArray;
+    control.push(this.initiateForm());
+  }
+
+  removePhone(i: number) {
+    const control = this.updateuserform.get('phone') as FormArray;
+    control.removeAt(i);
+  }
+
+  get f() { return this.updateuserform.controls; }
+
+  setTitleValidators() {
+
+    const other = this.updateuserform.get('other');
+    this.updateuserform.get('title').valueChanges
+      .subscribe(title => {
+
+        if (title === 'Mr') {
+          other.setValidators(null);
+        }
+
+        if (title === 'Mrs') {
+          other.setValidators(null);
+
+        }
+
+        if (title === "Other") {
+          other.setValidators([Validators.required]);
+        }
+        other.updateValueAndValidity();
+      });
   }
 
   backtoUsers() {
@@ -45,9 +108,16 @@ export class UpdateUserComponent implements OnInit {
   }
 
   updateUser() {
+    this.submitted = true;
+
+    let passPhone: any = [];
+    let tempPhone = this.updateuserform.get('phone').value;
+    tempPhone.forEach(element => {
+      passPhone.push(Object.values(element));
+    });
 
     let tempuser = {
-      id: Number(this.id),
+      id: this.id,
       name: {
         first: this.updateuserform.get('first').value,
         last: this.updateuserform.get('last').value,
@@ -57,7 +127,7 @@ export class UpdateUserComponent implements OnInit {
       other: this.updateuserform.get('other').value,
       company: this.updateuserform.get('company').value,
       email: this.updateuserform.get('email').value,
-      phone: [this.updateuserform.get('phone').value],
+      phone: passPhone,
       address: this.updateuserform.get('address').value,
       address2: this.updateuserform.get('address2').value,
       city: this.updateuserform.get('city').value,
@@ -65,6 +135,10 @@ export class UpdateUserComponent implements OnInit {
       zipcode: this.updateuserform.get('zipcode').value,
     }
     console.log("TEMPUSER", tempuser);
+
+    if (this.updateuserform.invalid) {
+      return;
+    }
 
     this.userService.updateUser(JSON.stringify(tempuser)).subscribe(result => {
       console.log("RESULT", result);

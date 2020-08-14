@@ -12,7 +12,11 @@ import { Router } from "@angular/router";
 export class UsersComponent implements OnInit {
   public users;
 
-  constructor(private router: Router, private userService: UserService, private http: HttpClient) { }
+  constructor(private router: Router, private userService: UserService) { }
+
+  public gotoAddUser() {
+    this.router.navigateByUrl("/add-user");
+  }
 
   ngOnInit(): void {
     this.getUsers();

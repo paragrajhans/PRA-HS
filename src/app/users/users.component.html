@@ -1,52 +1,72 @@
-<app-header></app-header>
+<div class="content-wrapper">
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Title</th>
+        <th scope="col">Other</th>
+        <th scope="col">Company</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="updateUser(user)">
+              <mat-icon>edit</mat-icon>
+              <span>Edit</span>
+            </button>
+            <button mat-menu-item (click)="deleteUser(user.id)">
+              <mat-icon>delete</mat-icon>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+        </td>
+        <td>{{ user.name.first + " " + user.name.last }}</td>
+        <td>{{ user.age ? user.age : "-" }}</td>
+        <td>{{ user.title }}</td>
+        <td>{{ user.other ? user.other : "-" }}</td>
+        <td>{{ user.company ? user.company : "-" }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>
+          {{
+            user.address +
+              ", " +
+              user.address2 +
+              ", " +
+              user.city +
+              ", " +
+              user.state +
+              ", " +
+              user.zipcode
+          }}
+        </td>
+      </tr>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Age</th>
-      <th scope="col">Title</th>
-      <th scope="col">Other</th>
-      <th scope="col">Company</th>
-      <!-- <th scope="col">Email</th> -->
-      <th scope="col">Phone</th>
-      <th scope="col">Address</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{ user.name.first + " " + user.name.last }}</td>
-      <td>{{ user.age ? user.age : "-" }}</td>
-      <td>{{ user.title }}</td>
-      <td>{{ user.other ? user.other : "-" }}</td>
-      <td>{{ user.company ? user.company : "-" }}</td>
-      <!-- <td>{{ user.email }}</td> -->
-      <td>{{ user.phone }}</td>
-      <td>
-        {{
-          user.address +
-            ", " +
-            user.address2 +
-            ", " +
-            user.city +
-            ", " +
-            user.state +
-            ", " +
-            user.zipcode
-        }}
-      </td>
-      <td>
-        <button className="button muted-button" (click)="updateUser(user)">
-          Edit
-        </button>
-        <button className="button muted-button" (click)="deleteUser(user.id)">
-          Delete
-        </button>
-      </td>
-    </tr>
+      <tr *ngIf="!users">
+        <td>No users</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <tr *ngIf="!users">
-      <td>No users</td>
-    </tr>
-  </tbody>
-</table>
+  <footer class="footer-wrapper">
+    <div>
+      <button class="primary-btn btn" (click)="gotoAddUser()">
+        Add User
+      </button>
+    </div>
+  </footer>
+</div>

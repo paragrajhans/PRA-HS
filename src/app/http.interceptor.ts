@@ -12,9 +12,10 @@ export class MockHttpCalIInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         if (request.url === users_url && request.method === 'GET') {
-            console.log("Request Method : " + request.method);
-            console.log("Request URL : " + request.url);
-            console.log("Loaded from json : " + request.url);
+            // console.log("Request Method : " + request.method);
+            // console.log("Request URL : " + request.url);
+            // console.log("Loaded from json : " + request.url);
+            // console.log(request)
 
             return of(new HttpResponse({
                 status: 200,
@@ -38,11 +39,10 @@ export class MockHttpCalIInterceptor implements HttpInterceptor {
                 body: temp_data,
             }));
         }
-
         if (request.method === 'DELETE') {
-            console.log("Request Method : " + request.method);
-            console.log("Request URL : " + request.url);
-            console.log("Request Body : " + JSON.stringify(request.body));
+            // console.log("Request Method : " + request.method);
+            // console.log("Request URL : " + request.url);
+            // console.log("Request Body : " + JSON.stringify(request.body));
 
             let id = request.url.substring(request.url.lastIndexOf('/') + 1);
             let temp = (data as any).default;
@@ -60,16 +60,9 @@ export class MockHttpCalIInterceptor implements HttpInterceptor {
         }
 
         if (request.method === 'PUT') {
-            // console.log("Request Method : " + request.method);
-            // console.log("Request URL : " + request.url);
-            // console.log("Request Body : " + request.body);
-
             let temp = (data as any).default;
             let new_user = request.body;
-            console.log(temp);
-            // console.log(JSON.parse(new_user));
             let user_id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-            // console.log("ID", user_id);
 
             let a = [];
             a.push(JSON.parse(new_user));
@@ -79,8 +72,6 @@ export class MockHttpCalIInterceptor implements HttpInterceptor {
                     temp[index] = a[0];
                 }
             });
-
-            // console.log(temp);
 
             request = request.clone({
                 body: temp,

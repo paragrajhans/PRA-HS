@@ -7,17 +7,21 @@ import { UsersComponent } from './users/users.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MockHttpCalIInterceptor } from './http.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { DialogcontentComponent } from './dialogcontent/dialogcontent.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    HeaderComponent,
     AddUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    DialogcontentComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +29,11 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    FormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
