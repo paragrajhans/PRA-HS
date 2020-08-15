@@ -133,6 +133,9 @@ export class AddUserComponent implements OnInit {
       return;
     }
 
+    console.log(tempuser);
+    console.log(this.adduserform);
+
     this.userService.saveUser(JSON.stringify(tempuser)).subscribe(result => {
       console.log("RESULT", result);
       this.router.navigateByUrl("/users");

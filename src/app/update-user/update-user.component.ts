@@ -26,13 +26,13 @@ export class UpdateUserComponent implements OnInit {
 
     this.updateuserform = this.frmBld.group({
       id: ['', Validators.required],
-      first: ['', Validators.required],
-      last: ['', Validators.required],
+      first: ['', [Validators.required, Validators.minLength(1)]],
+      last: ['', [Validators.required, Validators.minLength(1)]],
       age: '',
       title: ['', Validators.required],
       other: ['', Validators.required],
       company: '',
-      email: ['', Validators.required, Validators.email],
+      email: ['', [Validators.required, Validators.email]],
       phone: this.frmBld.array([]),
       address: ['', Validators.required],
       address2: '',
@@ -139,6 +139,9 @@ export class UpdateUserComponent implements OnInit {
     if (this.updateuserform.invalid) {
       return;
     }
+
+    console.log("POST", this.updateuserform);
+    console.log(this.updateuserform.value.first.length);
 
     this.userService.updateUser(JSON.stringify(tempuser)).subscribe(result => {
       console.log("RESULT", result);

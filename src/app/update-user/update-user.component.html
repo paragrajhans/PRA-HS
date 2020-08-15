@@ -17,7 +17,9 @@
           }"
         />
         <div *ngIf="submitted && f.first.errors" class="invalid-feedback">
-          <div *ngIf="f.first.errors.required">First Name is required</div>
+          <div *ngIf="f.first.errors.required">
+            First Name is required
+          </div>
         </div>
       </div>
 
@@ -28,6 +30,7 @@
           class="form-control"
           id="last"
           name="last"
+          placeholder="Enter last name"
           formControlName="last"
           [(ngModel)]="user.name.last"
           [ngClass]="{ 'is-invalid': submitted && f.last.errors }"
@@ -44,6 +47,7 @@
           class="form-control"
           id="age"
           name="age"
+          placeholder="Enter age"
           formControlName="age"
           [(ngModel)]="user.age"
         />
@@ -94,6 +98,7 @@
           class="form-control"
           id="company"
           name="company"
+          placeholder="Enter company"
           formControlName="company"
           [(ngModel)]="user.company"
         />
@@ -106,6 +111,7 @@
           class="form-control"
           id="email"
           name="email"
+          placeholder="Enter email"
           formControlName="email"
           [(ngModel)]="user.email"
           [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
@@ -150,6 +156,7 @@
                 name="phone"
                 formControlName="phone"
                 class="form-control"
+                placeholder="Enter phone"
               />
             </td>
 
@@ -170,6 +177,7 @@
           id="address"
           name="address"
           formControlName="address"
+          placeholder="Enter address"
           [(ngModel)]="user.address"
           [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
         />
@@ -185,6 +193,7 @@
           class="form-control"
           id="address2"
           name="address2"
+          placeholder="Enter address"
           formControlName="address2"
           [(ngModel)]="user.address2"
         />
@@ -197,6 +206,7 @@
           class="form-control"
           id="city"
           name="city"
+          placeholder="Enter city"
           formControlName="city"
           [(ngModel)]="user.city"
           [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
@@ -213,6 +223,7 @@
           class="form-control"
           id="state"
           name="state"
+          placeholder="Enter state"
           formControlName="state"
           [(ngModel)]="user.state"
           [ngClass]="{ 'is-invalid': submitted && f.state.errors }"
@@ -229,6 +240,7 @@
           class="form-control"
           id="zipcode"
           name="zipcode"
+          placeholder="Enter zipcode"
           formControlName="zipcode"
           [(ngModel)]="user.zipcode"
           [ngClass]="{ 'is-invalid': submitted && f.zipcode.errors }"
