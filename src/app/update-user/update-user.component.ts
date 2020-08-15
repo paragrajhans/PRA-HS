@@ -25,7 +25,7 @@ export class UpdateUserComponent implements OnInit {
     console.log(this.user);
 
     this.updateuserform = this.frmBld.group({
-      id: ['', Validators.required],
+      id: '',
       first: ['', [Validators.required, Validators.minLength(1)]],
       last: ['', [Validators.required, Validators.minLength(1)]],
       age: '',
@@ -117,7 +117,7 @@ export class UpdateUserComponent implements OnInit {
     });
 
     let tempuser = {
-      id: this.id,
+      id: Number(this.id),
       name: {
         first: this.updateuserform.get('first').value,
         last: this.updateuserform.get('last').value,
@@ -136,12 +136,13 @@ export class UpdateUserComponent implements OnInit {
     }
     console.log("TEMPUSER", tempuser);
 
+    console.log("PRE", this.updateuserform);
+
     if (this.updateuserform.invalid) {
       return;
     }
 
     console.log("POST", this.updateuserform);
-    console.log(this.updateuserform.value.first.length);
 
     this.userService.updateUser(JSON.stringify(tempuser)).subscribe(result => {
       console.log("RESULT", result);

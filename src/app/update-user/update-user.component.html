@@ -154,10 +154,27 @@
                 type="text"
                 id="phone"
                 name="phone"
+                required
                 formControlName="phone"
                 class="form-control"
                 placeholder="Enter phone"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                [ngClass]="{
+                  'is-invalid':
+                    submitted &&
+                    f.phone.at(i).controls.phone.status === 'INVALID'
+                }"
               />
+              <!-- <div *ngIf="submitted" class="invalid-feedback"> -->
+              <!-- <div *ngIf="f.phone.status == 'INVALID'">
+                Phone is required
+              </div> -->
+              <!-- </div> -->
+              <div *ngIf="submitted" class="invalid-feedback">
+                <div *ngIf="f.phone.at(i).controls.phone.status === 'INVALID'">
+                  Phone is required
+                </div>
+              </div>
             </td>
 
             <td class="remove-td">

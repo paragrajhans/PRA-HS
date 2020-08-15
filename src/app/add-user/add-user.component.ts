@@ -22,7 +22,7 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit() {
     this.adduserform = this.frmBld.group({
-      id: ['', Validators.required],
+      id: '',
       first: ['', Validators.required],
       last: ['', Validators.required],
       age: '',
@@ -108,6 +108,8 @@ export class AddUserComponent implements OnInit {
     tempPhone.forEach(element => {
       passPhone.push(Object.values(element));
     });
+
+    console.log(this.adduserform);
 
 
     let tempuser = {

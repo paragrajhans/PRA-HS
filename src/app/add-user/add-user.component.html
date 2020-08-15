@@ -151,9 +151,17 @@
                 formControlName="phone"
                 placeholder="Enter phone"
                 class="form-control"
+                required
+                [ngClass]="{
+                  'is-invalid':
+                    submitted &&
+                    f.phone.at(i).controls.phone.status === 'INVALID'
+                }"
               />
-              <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                <div *ngIf="f.phone.errors.required">Phone is required</div>
+              <div *ngIf="submitted" class="invalid-feedback">
+                <div *ngIf="f.phone.at(i).controls.phone.status === 'INVALID'">
+                  Phone is required
+                </div>
               </div>
             </td>
 
