@@ -23,13 +23,13 @@ export class AddUserComponent implements OnInit {
   ngOnInit() {
     this.adduserform = this.frmBld.group({
       id: '',
-      first: ['', Validators.required],
-      last: ['', Validators.required],
+      first: ['', [Validators.required, Validators.minLength(1)]],
+      last: ['', [Validators.required, Validators.minLength(1)]],
       age: '',
       title: ['', Validators.required],
       other: ['', Validators.required],
       company: '',
-      email: ['', Validators.required, Validators.email],
+      email: ['', [Validators.required, Validators.email]],
       phone: this.frmBld.array([]),
       address: ['', Validators.required],
       address2: '',
