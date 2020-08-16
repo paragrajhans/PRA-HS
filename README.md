@@ -5,6 +5,7 @@ Get the repository (master branch) and run the following commands.
 ```bash
 npm i
 ng serve
+url for web browser : http://localhost:4200/users
 ```
 
 ## Requirements
