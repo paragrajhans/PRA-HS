@@ -3,30 +3,26 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse, Htt
 import { Observable, of } from 'rxjs';
 import * as data from './mock_data.json';
 
+//Base mock URL to populate users data
 const users_url = "http://localhost:3000/users";
 
 @Injectable()
 export class MockHttpCalIInterceptor implements HttpInterceptor {
     constructor(private injector: Injector) { }
 
+    //Interceptor to intercept the type of CRUD operation
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+        //Indicates getting all users
         if (request.url === users_url && request.method === 'GET') {
-            // console.log("Request Method : " + request.method);
-            // console.log("Request URL : " + request.url);
-            // console.log("Loaded from json : " + request.url);
-            // console.log(request)
-
             return of(new HttpResponse({
                 status: 200,
                 body: ((data) as any).default,
             }));
         }
-        if (request.method === 'POST') {
-            console.log("Request Method : " + request.method);
-            console.log("Request URL : " + request.url);
-            console.log("Request Body : " + request.body);
 
+        //Indicates adding a user
+        if (request.method === 'POST') {
             let temp_data = (data as any).default;
             temp_data.push(JSON.parse(request.body));
 
@@ -39,11 +35,9 @@ export class MockHttpCalIInterceptor implements HttpInterceptor {
                 body: temp_data,
             }));
         }
-        if (request.method === 'DELETE') {
-            // console.log("Request Method : " + request.method);
-            // console.log("Request URL : " + request.url);
-            // console.log("Request Body : " + JSON.stringify(request.body));
 
+        //Indicates deleting a user
+        if (request.method === 'DELETE') {
             let id = request.url.substring(request.url.lastIndexOf('/') + 1);
             let temp = (data as any).default;
             const index = temp.findIndex(x => x.id == id);
@@ -59,6 +53,7 @@ export class MockHttpCalIInterceptor implements HttpInterceptor {
             }));
         }
 
+        //Indicates updating a user
         if (request.method === 'PUT') {
             let temp = (data as any).default;
             let new_user = request.body;

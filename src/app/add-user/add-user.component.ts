@@ -17,6 +17,7 @@ export class AddUserComponent implements OnInit {
   public users;
   submitted = false;
   public adduserform: FormGroup;
+  public userAdded: boolean = false;
 
   constructor(public dialog: MatDialog, private router: Router, private frmBld: FormBuilder, private userService: UserService) { }
 
@@ -39,33 +40,38 @@ export class AddUserComponent implements OnInit {
     })
 
     this.addPhone();
-
     this.setTitleValidators();
   }
 
+  //To have a default input phone field
   initiateForm(): FormGroup {
     return this.frmBld.group({
       phone: ['', Validators.required]
     });
   }
 
-  get phone() {
+  //Get all the phone numbers, if any
+  public get phone() {
     const control = this.adduserform.get('phone') as FormArray;
     return control;
   }
 
-  addPhone() {
+  //Add phone number to the FormArray
+  public addPhone() {
     const control = this.adduserform.get('phone') as FormArray;
     control.push(this.initiateForm());
   }
 
-  removePhone(i: number) {
+  //Delete phone number to the FormArray
+  public removePhone(i: number) {
     const control = this.adduserform.get('phone') as FormArray;
     control.removeAt(i);
   }
 
-  get f() { return this.adduserform.controls; }
+  //Get access to the FormGroup controls
+  public get f() { return this.adduserform.controls; }
 
+  //Navigate back to users table
   public backtoUsers() {
     const dialogRef = this.dialog.open(DialogcontentComponent);
 
@@ -75,14 +81,15 @@ export class AddUserComponent implements OnInit {
 
   }
 
+  //Get id for new user
   public getId() {
     let a = (data as any).default;
-    console.log(typeof Object.keys(a).length);
     return Object.keys(a).length;
-
   }
 
-  setTitleValidators() {
+  //Customer Validator to validate the Other input field
+  //Only when the Title is Other, the Other input field is required
+  public setTitleValidators() {
 
     const other = this.adduserform.get('other');
     this.adduserform.get('title').valueChanges
@@ -100,6 +107,7 @@ export class AddUserComponent implements OnInit {
       });
   }
 
+  //Add user
   public addUser() {
     this.submitted = true;
 
@@ -108,9 +116,6 @@ export class AddUserComponent implements OnInit {
     tempPhone.forEach(element => {
       passPhone.push(Object.values(element));
     });
-
-    console.log(this.adduserform);
-
 
     let tempuser = {
       id: Number(this.getId()),
@@ -135,11 +140,7 @@ export class AddUserComponent implements OnInit {
       return;
     }
 
-    console.log(tempuser);
-    console.log(this.adduserform);
-
     this.userService.saveUser(JSON.stringify(tempuser)).subscribe(result => {
-      console.log("RESULT", result);
       this.router.navigateByUrl("/users");
     }, err => {
       console.log(err);

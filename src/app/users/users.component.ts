@@ -15,6 +15,7 @@ export class UsersComponent implements OnInit {
 
   constructor(private router: Router, private userService: UserService) { }
 
+  //Navigate to add user
   public gotoAddUser() {
     this.router.navigateByUrl("/add-user");
   }
@@ -23,17 +24,17 @@ export class UsersComponent implements OnInit {
     this.getUsers();
   }
 
-  getUsers() {
+  //Get users
+  public getUsers() {
     this.btnClick = false;
     this.userService.getUsers().subscribe(result => {
       this.users = result;
-      console.log("GET USERS", result)
     })
   }
 
+  //Delete user
   deleteUser(id: number) {
     this.btnClick = true;
-    console.log(this.btnClick);
     this.userService.deleteUser(id).subscribe(_ => {
       setTimeout(() => {
         this.getUsers();
@@ -41,8 +42,8 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  //Updat user by storing the particular user's data in localstorage and navigating to update user
   updateUser(user) {
-    console.log(user);
     localStorage.setItem('user', JSON.stringify(user));
     this.router.navigateByUrl(`/update-user/${user.id}`);
   }

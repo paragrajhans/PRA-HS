@@ -137,26 +137,11 @@
           >Phone
           <span class="red-star">*</span>
         </label>
-        <button
-          type="button"
-          (click)="addPhone()"
-          class="btn btn-primary btn-success add-btn"
-        >
-          Add
+        <button type="button" (click)="addPhone()" class="btn btn-info add-btn">
+          <span class="material-icons">
+            add
+          </span>
         </button>
-        <!-- <input
-          type="text"
-          class="form-control"
-          id="phone"
-          name="phone"
-          placeholder="For multiple phone #s, seperate them using comma"
-          formControlName="phone"
-          [(ngModel)]="user.phone"
-          [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
-        /> -->
-        <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required">Email is required</div>
-        </div> -->
 
         <table class="table phone-table" formArrayName="phone">
           <tr
@@ -184,8 +169,8 @@
             </td>
 
             <td class="remove-td">
-              <button (click)="removePhone(i)" class="btn btn-danger">
-                Remove
+              <button (click)="removePhone(i)" class="btn btn-danger del-btn">
+                <span class="material-icons"> delete </span>
               </button>
             </td>
           </tr>
@@ -288,12 +273,12 @@
 
     <footer class="footer-wrapper">
       <div class="d-flex justify-content-end">
-        <button class="tertiary-btn btn" (click)="backtoUsers()">
-          Cancel
+        <button class="btn-secondary btn" (click)="backtoUsers()">
+          <span class="material-icons"> cancel </span>&nbsp; Cancel
         </button>
         &nbsp;&nbsp;
-        <button type="submit" class="primary-btn btn">
-          Save
+        <button type="submit" class="btn-success btn">
+          <span class="material-icons"> save </span>&nbsp; Save
         </button>
       </div>
     </footer>

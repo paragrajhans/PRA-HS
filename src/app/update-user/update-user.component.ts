@@ -20,9 +20,9 @@ export class UpdateUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    console.log(this.id);
+
+    //Get data from localstorage and set it to user
     this.user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.user);
 
     this.updateuserform = this.frmBld.group({
       id: '',
@@ -41,47 +41,52 @@ export class UpdateUserComponent implements OnInit {
       zipcode: ['', Validators.required],
     })
 
-    this.updateuserform.setControl('phone', this.setExistingSkills(this.user.phone));
-
+    this.updateuserform.setControl('phone', this.setPhones(this.user.phone));
     this.setTitleValidators();
   }
 
-  setExistingSkills(phones: any[]): FormArray {
+  //Populate the FormArray data
+  public setPhones(phones: any[]): FormArray {
     const formArray = new FormArray([]);
     phones.forEach(s => {
-      // console.log("S", s);
       formArray.push(this.frmBld.group({
         phone: s
       }));
-      // console.log(formArray);
     });
     return formArray;
   }
 
-  initiateForm(): FormGroup {
+  //To have a default input phone field
+  public initiateForm(): FormGroup {
     return this.frmBld.group({
       phone: ['', Validators.required]
     });
   }
 
-  get phone() {
+  //Get all the phone numbers, if any
+  public get phone() {
     let control = this.updateuserform.get('phone') as FormArray;
     return control;
   }
 
-  addPhone() {
+  //Add phone number to the FormArray
+  public addPhone() {
     const control = this.updateuserform.get('phone') as FormArray;
     control.push(this.initiateForm());
   }
 
-  removePhone(i: number) {
+  //Delete phone number to the FormArray
+  public removePhone(i: number) {
     const control = this.updateuserform.get('phone') as FormArray;
     control.removeAt(i);
   }
 
-  get f() { return this.updateuserform.controls; }
+  //Get access to the FormGroup controls
+  public get f() { return this.updateuserform.controls; }
 
-  setTitleValidators() {
+  //Customer Validator to validate the Other input field
+  //Only when the Title is Other, the Other input field is required
+  public setTitleValidators() {
 
     const other = this.updateuserform.get('other');
     this.updateuserform.get('title').valueChanges
@@ -103,11 +108,13 @@ export class UpdateUserComponent implements OnInit {
       });
   }
 
-  backtoUsers() {
+  //Navigate back to users table
+  public backtoUsers() {
     this.router.navigateByUrl("/users");
   }
 
-  updateUser() {
+  //Update user
+  public updateUser() {
     this.submitted = true;
 
     let passPhone: any = [];
@@ -134,18 +141,12 @@ export class UpdateUserComponent implements OnInit {
       state: this.updateuserform.get('state').value,
       zipcode: this.updateuserform.get('zipcode').value,
     }
-    console.log("TEMPUSER", tempuser);
-
-    console.log("PRE", this.updateuserform);
 
     if (this.updateuserform.invalid) {
       return;
     }
 
-    console.log("POST", this.updateuserform);
-
-    this.userService.updateUser(JSON.stringify(tempuser)).subscribe(result => {
-      console.log("RESULT", result);
+    this.userService.updateUser(JSON.stringify(tempuser)).subscribe(_ => {
       this.router.navigateByUrl("/users");
     }, err => {
       console.log(err);

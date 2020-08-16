@@ -2,12 +2,13 @@
   <h3>You have unsaved changes. Are you sure you want to leave?</h3>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button mat-dialog-close class="btn-light btn">Cancel</button>
   <button
     mat-button
     [mat-dialog-close]="true"
     cdkFocusInitial
     (click)="backToUsers()"
+    class="btn-warning btn"
   >
     Yes
   </button>

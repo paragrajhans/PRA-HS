@@ -7,13 +7,10 @@
 .form-container {
     display: flex;
     justify-content: center;
-    // width: 400px;
-    // border: 1px solid red;
 
     .form-wrapper {
         display: flow-root;
         margin-bottom: 100px;
-        // border: 1px solid blue;
         width: 400px;
 
         .red-star {
@@ -22,6 +19,11 @@
 
         .add-btn {
             float: right;
+            display: flex;
+        }
+
+        .del-btn {
+            display: flex;
         }
 
         .phone-table {
@@ -51,43 +53,9 @@
         left: 0;
         z-index: 1030;
 
-        .primary-btn,
-        .tertiary-btn:focus {
-            outline: 0;
-        }
-
-        .primary-btn {
-            color: #ffffff;
-            height: 34px;
-            background-color: #1079bf;
-            font-size: 14px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        .primary-btn:hover {
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
-            color: white;
-        }
-
-        .primary-btn:active {
-            background-color: #283b4b;
-        }
-
-        .primary-btn:focus {
-            outline: 0;
-        }
-
-        .tertiary-btn {
-            background-color: transparent;
-            border: none;
-            color: #1079bf;
-            height: 34px;
-            font-weight: 600;
-        }
-
-        .tertiary-btn:hover {
-            font-weight: 600;
+        .btn-success,
+        .btn-secondary {
+            display: flex;
         }
     }
 }
