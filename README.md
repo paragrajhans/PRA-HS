@@ -35,8 +35,15 @@ No other 3rd party libraries/functions are allowed.
   - Update User Component that allows you to update an exsting user.
   - Dialog Content Component that has the dialog content.
 
-- I have used the RxJS library to implement the CRUD functionality. Due to restrictions, I have also written an Http Interceptor(MockHttpCalIInterceptor) to intercept the type of Http request (GET,PUT,POST,DELETE) and based on the request, have written the function. 
-  
+- I have one Service that takes care of all the HTTP transactions.
+
+- Used the RxJS library to implement the CRUD functionality. Due to restrictions, I have also written an Http Interceptor(MockHttpCalIInterceptor) to intercept the type of HTTP request (GET/PUT/POST/DELETE) and based on the request, performed the operation.
+
+- Default and Custom Validations to the FormGroup and FormArray fields. 
+
+- Material Icons for better readability.
+
+- Bootstrap components
 
 ## Contributions
 
