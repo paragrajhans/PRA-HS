@@ -41,6 +41,7 @@ export class AddUserComponent implements OnInit {
 
     this.addPhone();
     this.setTitleValidators();
+
   }
 
   //To have a default input phone field

@@ -169,7 +169,11 @@
             </td>
 
             <td class="remove-td">
-              <button (click)="removePhone(i)" class="btn btn-danger del-btn">
+              <button
+                *ngIf="f.phone.controls.length > 1"
+                (click)="removePhone(i)"
+                class="btn btn-danger del-btn"
+              >
                 <span class="material-icons"> delete </span>
               </button>
             </td>
