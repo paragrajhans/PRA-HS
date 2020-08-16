@@ -29,9 +29,12 @@ No other 3rd party libraries/functions are allowed.
 
 ## My Approach
 
-- I have created 3 components
-  - One
-  - Two
+- I have created 4 components
+  - Users Component that is loaded when you run the application for the very first time. It displays the list of users populated from the JSON.
+  - Add User Component that allows you to add a new user.
+  - Update User Component that allows you to update an exsting user.
+  - Dialog Content Component that has the dialog content.
+  
 
 ## Contributions
 
