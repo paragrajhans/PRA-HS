@@ -35,7 +35,7 @@ No other 3rd party libraries/functions are allowed.
   - Update User Component that allows you to update an exsting user.
   - Dialog Content Component that has the dialog content.
 
-- Any changes made to the data is temporary. Once you refresh the page, all the users that you may hav created, deleted or updated will go away and data will be loaded from the json.
+- Any changes made to the data are temporary. Once you refresh the page, all the users that you may have created, deleted or updated will go away and data will be loaded from the provided mock_data.json.
 
 - A Service that takes care of all the HTTP transactions.
 
