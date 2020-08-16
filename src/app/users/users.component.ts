@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 })
 export class UsersComponent implements OnInit {
   public users;
+  public btnClick: boolean = false;
 
   constructor(private router: Router, private userService: UserService) { }
 
@@ -23,6 +24,7 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers() {
+    this.btnClick = false;
     this.userService.getUsers().subscribe(result => {
       this.users = result;
       console.log("GET USERS", result)
@@ -30,9 +32,12 @@ export class UsersComponent implements OnInit {
   }
 
   deleteUser(id: number) {
-    this.userService.deleteUser(id).subscribe(result => {
-      console.log(result);
-      this.getUsers();
+    this.btnClick = true;
+    console.log(this.btnClick);
+    this.userService.deleteUser(id).subscribe(_ => {
+      setTimeout(() => {
+        this.getUsers();
+      }, 1000);
     })
   }
 

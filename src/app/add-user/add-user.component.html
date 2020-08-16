@@ -3,7 +3,10 @@
   <form [formGroup]="adduserform" (ngSubmit)="addUser()">
     <div class="form-wrapper">
       <div class="form-group">
-        <label for="name">First Name</label>
+        <label for="name"
+          >First Name
+          <span class="red-star">*</span>
+        </label>
         <input
           type="text"
           class="form-control"
@@ -20,7 +23,10 @@
       </div>
 
       <div class="form-group">
-        <label for="name">Last Name</label>
+        <label for="name"
+          >Last Name
+          <span class="red-star">*</span>
+        </label>
         <input
           type="text"
           class="form-control"
@@ -37,7 +43,7 @@
       </div>
 
       <div class="form-group">
-        <label for="name">Age</label>
+        <label for="name">Age </label>
         <input
           type="number"
           class="form-control"
@@ -50,7 +56,10 @@
       </div>
 
       <div class="form-group">
-        <label for="name">Title</label>
+        <label for="name"
+          >Title
+          <span class="red-star">*</span>
+        </label>
         <select
           id="title"
           class="form-control"
@@ -71,7 +80,10 @@
       </div>
 
       <div class="form-group">
-        <label for="name">Other</label>
+        <label for="name"
+          >Other
+          <span *ngIf="f.title.value === 'Other'" class="red-star">*</span>
+        </label>
         <input
           type="text"
           class="form-control"
@@ -101,7 +113,10 @@
       </div>
 
       <div class="form-group">
-        <label for="name">Email</label>
+        <label for="name"
+          >Email
+          <span class="red-star">*</span>
+        </label>
         <input
           type="email"
           class="form-control"
@@ -118,7 +133,10 @@
       </div>
 
       <div class="form-group">
-        <label for="name">Phone</label>
+        <label for="name"
+          >Phone
+          <span class="red-star">*</span>
+        </label>
         <button
           type="button"
           (click)="addPhone()"
@@ -175,7 +193,10 @@
       </div>
 
       <div class="form-group">
-        <label for="name">Address</label>
+        <label for="name"
+          >Address
+          <span class="red-star">*</span>
+        </label>
         <input
           type="text"
           class="form-control"
@@ -205,7 +226,10 @@
       </div>
 
       <div class="form-group">
-        <label for="name">City</label>
+        <label for="name"
+          >City
+          <span class="red-star">*</span>
+        </label>
         <input
           type="text"
           class="form-control"
@@ -222,7 +246,10 @@
       </div>
 
       <div class="form-group">
-        <label for="name">State</label>
+        <label for="name"
+          >State
+          <span class="red-star">*</span>
+        </label>
         <input
           type="text"
           class="form-control"
@@ -239,7 +266,10 @@
       </div>
 
       <div class="form-group">
-        <label for="name">Zipcode</label>
+        <label for="name"
+          >Zipcode
+          <span class="red-star">*</span>
+        </label>
         <input
           type="number"
           class="form-control"
