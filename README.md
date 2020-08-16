@@ -29,13 +29,13 @@ No other 3rd party libraries/functions are allowed.
 
 ## My Approach
 
-- I have created 4 components
+- Created 4 components
   - Users Component that is loaded when you run the application for the very first time. It displays the list of users populated from the JSON.
   - Add User Component that allows you to add a new user.
   - Update User Component that allows you to update an exsting user.
   - Dialog Content Component that has the dialog content.
 
-- I have one Service that takes care of all the HTTP transactions.
+- A Service that takes care of all the HTTP transactions.
 
 - Used the RxJS library to implement the CRUD functionality. Due to restrictions, I have also written an Http Interceptor(MockHttpCalIInterceptor) to intercept the type of HTTP request (GET/PUT/POST/DELETE) and based on the request, performed the operation.
 
