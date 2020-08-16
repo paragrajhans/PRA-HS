@@ -2,18 +2,16 @@
 
 Get the repository (master branch) and run the following commands.
 
-In case you don't have Node installed,
-
-```bash
-https://nodejs.org/en/
-
-```
-
 ```bash
 npm i
 ng serve
 url for browser : http://localhost:4200/users
+```
 
+In case you don't have Node installed,
+
+```bash
+https://nodejs.org/en/
 
 ```
 
