@@ -5,7 +5,7 @@ Get the repository (master branch) and run the following commands.
 ```bash
 npm i
 ng serve
-url for web browser : http://localhost:4200/users
+url for browser : http://localhost:4200/users
 ```
 
 ## Requirements
@@ -34,6 +34,8 @@ No other 3rd party libraries/functions are allowed.
   - Add User Component that allows you to add a new user.
   - Update User Component that allows you to update an exsting user.
   - Dialog Content Component that has the dialog content.
+
+- Any changes made to the data is temporary. Once you refresh the page, all the users that you may hav created, deleted or updated will go away and data will be loaded from the json.
 
 - A Service that takes care of all the HTTP transactions.
 
