@@ -1,6 +1,6 @@
 ## Installation
 
-Get the repository (master branch) and run the following commands.
+Get the repository (master branch) and run the following commands:
 
 ```bash
 npm i
@@ -8,10 +8,16 @@ ng serve
 url for browser : http://localhost:4200/users
 ```
 
-In case you don't have Node installed,
+In case you don't have Node and Angular CLI installed,
 
 ```bash
 https://nodejs.org/en/
+```
+
+open a terminal window and run the following command:
+
+```bash
+npm install -g @angular/cli
 
 ```
 
