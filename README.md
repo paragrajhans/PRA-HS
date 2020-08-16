@@ -34,6 +34,8 @@ No other 3rd party libraries/functions are allowed.
   - Add User Component that allows you to add a new user.
   - Update User Component that allows you to update an exsting user.
   - Dialog Content Component that has the dialog content.
+
+- I have used the RxJS library to implement the CRUD functionality. Due to restrictions, I have also written an Http Interceptor(MockHttpCalIInterceptor) to intercept the type of Http request (GET,PUT,POST,DELETE) and based on the request, have written the function. 
   
 
 ## Contributions
