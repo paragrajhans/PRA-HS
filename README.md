@@ -1,27 +1,40 @@
-# Client
+## Installation
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
+Get the repository (master branch) and run the following commands.
 
-## Development server
+```bash
+npm install
+npm start
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Requirements
 
-## Code scaffolding
+Minimum Conceptual Requirements:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Include the product image, title, price, and link to the product page URL.
+- Present a UI that is clean, visually interesting, intuitive, and efficient for the user to do the following:
+  - add an item to a cart
+  - remove an item from the list
+  - sort items according to price, title, brand, availability
 
-## Build
+Code Requirements:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Responsive : mobile first
+- Semantic HTML5
+- CSS3 / Sass
+- Accessibility Compliant
 
-## Running unit tests
+## My Approach
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- The header is divided into 3 sections - Home, Shop & Cart. Clicking on each section navigates the page to that particular part of the page.
+- A small gesture is displayed on refreshing the page.
+- The landing page is a video.
+- Clicking on any image in the Shop section will display detailed information about the product with a link to Navigate to the Product.
+- Items can be sorted based on Availability, Stock, Title, Brand & Price.
+- If the item is "Out of Stock", the "Add to Cart" button is disabled with a different color code.
+- Adding/Removing an item from the Cart updates the number of items in the cart and the total amount which is displayed in the header.
+- The footer has links to my github repository and email address.
 
-## Running end-to-end tests
+## Contributions
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+I'm always open for suggestions and improvements.
