@@ -39,7 +39,7 @@ No other 3rd party libraries/functions are allowed.
 
 - Used the RxJS library to implement the CRUD functionality. Due to restrictions, I have also written an Http Interceptor(MockHttpCalIInterceptor) to intercept the type of HTTP request (GET/PUT/POST/DELETE) and based on the request, performed the operation.
 
-- Default and Custom Validations to the FormGroup and FormArray fields. Some HTML validation using ngClass 
+- Default and Custom Validations to the FormGroup and FormArray fields. Some HTML validations using ngClass.
 
 - Material Icons for better readability.
 
