@@ -29,7 +29,7 @@ No other 3rd party libraries/functions are allowed.
 
 ## My Approach
 
-- Created 4 components
+- Created 4 Components
   - Users Component that is loaded when you run the application for the very first time. It displays the list of users populated from the JSON.
   - Add User Component that allows you to add a new user.
   - Update User Component that allows you to update an exsting user.
